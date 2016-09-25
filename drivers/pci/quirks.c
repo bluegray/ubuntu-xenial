@@ -2761,6 +2761,13 @@ static void quirk_hotplug_bridge(struct pci_dev *dev)
 
 DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_HINT, 0x0020, quirk_hotplug_bridge);
 
+static void quirk_hotplug_bridge_skip(struct pci_dev *dev)
+{
+       dev->is_hotplug_bridge = 0;
+}
+
+DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_INTEL, 0x8c10, quirk_hotplug_bridge_skip);
+
 /*
  * Apple: Avoid programming the memory/io aperture of 00:1c.0
  *
